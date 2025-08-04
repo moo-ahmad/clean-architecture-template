@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FollowUpMate.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace FollowUpMate.Infrastructure
 {
@@ -6,6 +8,10 @@ namespace FollowUpMate.Infrastructure
     {
         public static IServiceCollection AddInfrastructureDI(this IServiceCollection services)
         {
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseSqlServer("Connection Strings Here");
+            });
             return services;
         }
     }
