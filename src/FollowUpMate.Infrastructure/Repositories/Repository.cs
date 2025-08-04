@@ -1,4 +1,4 @@
-﻿using FollowUpMate.Application.Interfaces.Common;
+﻿using FollowUpMate.Application.Interfaces;
 using FollowUpMate.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,7 +8,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FollowUpMate.Infrastructure.Repositories.Common
+namespace FollowUpMate.Infrastructure.Repositories
 {
     public class Repository<T> : IRepository<T>
         where T : class
@@ -32,7 +32,7 @@ namespace FollowUpMate.Infrastructure.Repositories.Common
             await _dbSet.AddRangeAsync(entities);
         }
 
-        public async Task<int> CountAsync(Expression<Func<T, bool>>? predicate = null)
+        public async Task<int> CountAsync(Expression<Func<T, bool>> predicate = null)
         {
             if(predicate == null)
             {

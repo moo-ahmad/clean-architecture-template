@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FollowUpMate.Application.Interfaces.Common
+namespace FollowUpMate.Application.Interfaces
 {
     public interface IRepository<T> where T : class
     {
@@ -15,7 +15,7 @@ namespace FollowUpMate.Application.Interfaces.Common
         Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate);
         Task<List<T>> GetAllAsync();
         Task<bool> ExistsAsync(Expression<Func<T, bool>> predicate);
-        Task<int> CountAsync(Expression<Func<T, bool>>? predicate = null);
+        Task<int> CountAsync(Expression<Func<T, bool>> predicate = null);
 
         // WRITE
         Task AddAsync(T entity);

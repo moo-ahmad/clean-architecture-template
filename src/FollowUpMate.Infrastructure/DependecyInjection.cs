@@ -1,4 +1,6 @@
-﻿using FollowUpMate.Infrastructure.Data;
+﻿using FollowUpMate.Application.Interfaces;
+using FollowUpMate.Infrastructure.Data;
+using FollowUpMate.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,6 +14,10 @@ namespace FollowUpMate.Infrastructure
             {
                 options.UseSqlServer("Connection Strings Here");
             });
+
+            services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
             return services;
         }
     }
