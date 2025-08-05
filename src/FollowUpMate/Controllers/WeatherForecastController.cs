@@ -1,3 +1,4 @@
+using FollowUpMate.Infrastructure.Logging;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FollowUpMate.Controllers
@@ -11,9 +12,9 @@ namespace FollowUpMate.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
 
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IAppLogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(IAppLogger<WeatherForecastController> logger)
         {
             _logger = logger;
         }
@@ -21,6 +22,7 @@ namespace FollowUpMate.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<WeatherForecast> Get()
         {
+            _logger.LogInformation("Fetching weather forecast data.");
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {
                 Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),

@@ -1,5 +1,6 @@
 ﻿using FollowUpMate.Application.Interfaces;
 using FollowUpMate.Infrastructure.Data;
+using FollowUpMate.Infrastructure.Logging;
 using FollowUpMate.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +18,7 @@ namespace FollowUpMate.Infrastructure
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(IAppLogger<>), typeof(AppLogger<>));
 
             return services;
         }
