@@ -1,4 +1,5 @@
 using FollowUpMate.API;
+using FollowUpMate.API.Middleware;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,13 +24,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseSerilogRequestLogging();
+
+app.UseMiddleware<ExceptionHandlingMiddleware>();
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
 app.MapControllers();
-
-app.UseSerilogRequestLogging();
 
 app.Run();
