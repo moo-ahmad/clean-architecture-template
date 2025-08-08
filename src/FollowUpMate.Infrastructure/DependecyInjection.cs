@@ -24,6 +24,8 @@ namespace FollowUpMate.Infrastructure
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IAppLogger<>), typeof(AppLogger<>));
 
+            services.AddAuthentication();
+
             return services;
         }
     }

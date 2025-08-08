@@ -23,7 +23,6 @@ namespace FollowUpMate.API
                         ValidateIssuer = true,
                         ValidateAudience = true,
                         ValidIssuer = configuration["Jwt:Issuer"],
-                        ValidAudience = configuration["Jwt:Audience"],
                         IssuerSigningKey = new SymmetricSecurityKey(key)
                     };
                 });
