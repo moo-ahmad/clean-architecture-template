@@ -1,4 +1,4 @@
-﻿using FollowUpMate.Application.Interfaces;
+﻿using FollowUpMate.Application.Interfaces.Repository;
 using FollowUpMate.Infrastructure.Data;
 using System;
 using System.Collections.Generic;

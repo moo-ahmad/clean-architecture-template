@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FollowUpMate.Application.Interfaces
+namespace FollowUpMate.Application.Interfaces.Repository
 {
     public interface IUnitOfWork
     {

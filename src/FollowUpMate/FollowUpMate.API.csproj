@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.18" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.18">
       <PrivateAssets>all</PrivateAssets>
@@ -20,6 +21,10 @@
   <ItemGroup>
     <ProjectReference Include="..\FollowUpMate.Application\FollowUpMate.Application.csproj" />
     <ProjectReference Include="..\FollowUpMate.Infrastructure\FollowUpMate.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Logs\" />
   </ItemGroup>
 
 </Project>

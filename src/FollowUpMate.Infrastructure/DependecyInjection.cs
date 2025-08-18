@@ -1,8 +1,11 @@
 ﻿using FollowUpMate.Application.Interfaces;
+using FollowUpMate.Application.Interfaces.Auth;
+using FollowUpMate.Application.Interfaces.Repository;
 using FollowUpMate.Infrastructure.Data;
 using FollowUpMate.Infrastructure.Identity;
 using FollowUpMate.Infrastructure.Logging;
 using FollowUpMate.Infrastructure.Repositories;
+using FollowUpMate.Infrastructure.Services.Auth;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -17,12 +20,15 @@ namespace FollowUpMate.Infrastructure
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<User, IdentityRole>()
+            services.AddIdentity<User, IdentityRole<Guid>>()
                 .AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped(typeof(IAppLogger<>), typeof(AppLogger<>));
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+            services.AddSingleton(typeof(IAppLogger<>), typeof(AppLogger<>));
 
             services.AddAuthentication();
 

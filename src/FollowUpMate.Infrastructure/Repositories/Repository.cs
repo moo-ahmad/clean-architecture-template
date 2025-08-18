@@ -1,4 +1,5 @@
 ﻿using FollowUpMate.Application.Interfaces;
+using FollowUpMate.Application.Interfaces.Repository;
 using FollowUpMate.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
