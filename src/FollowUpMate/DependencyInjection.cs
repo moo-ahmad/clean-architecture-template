@@ -1,7 +1,10 @@
 ﻿using FollowUpMate.Application;
+using FollowUpMate.Application.Features.Auth.Commands.Login;
 using FollowUpMate.Infrastructure;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using System.Reflection;
 using System.Text;
 
 namespace FollowUpMate.API
@@ -27,6 +30,7 @@ namespace FollowUpMate.API
                     };
                 });
             services.AddAuthorization();
+            services.AddMediatR(typeof(LoginCommandHandler).Assembly);
             services.AddApplicationDI()
                     .AddInfrastructureDI(configuration);
             return services;

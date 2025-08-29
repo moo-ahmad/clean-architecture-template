@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using FollowUpMate.Application.Interfaces.Auth;
+using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,15 +10,20 @@ namespace FollowUpMate.Application.Features.Auth.Commands.Register
 {
     public class RegisterCommandHandler : IRequestHandler<RegisterCommand, AuthResponseDto>
     {
+        private readonly IAuthService _authService;
+
+        public RegisterCommandHandler(IAuthService authService)
+        {
+            _authService = authService;
+        }
         public async Task<AuthResponseDto> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
-            // Here you would typically call your user service to register the user
-            // and generate a token. For now, we will return a dummy response.
+            var result = await _authService.RegisterAsync(request.FirstName, request.LastName, request.Email, request.Password);
             return await Task.FromResult(new AuthResponseDto
             {
-                Token = "dummy-token",
-                Email = request.Email,
-                FullName = $"{request.FirstName} {request.LastName}"
+                Token = result.Token,
+                Email = result.Email,
+                FullName = result.FullName
             });
         }
     }

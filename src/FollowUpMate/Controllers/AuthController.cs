@@ -1,4 +1,6 @@
-﻿using FollowUpMate.Application.Features.Auth.Commands.Login;
+﻿using FollowUpMate.API.DTOs;
+using FollowUpMate.Application.Features.Auth;
+using FollowUpMate.Application.Features.Auth.Commands.Login;
 using FollowUpMate.Application.Features.Auth.Commands.Register;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -21,14 +23,14 @@ namespace FollowUpMate.API.Controllers
         public async Task<IActionResult> Register([FromBody] RegisterCommand command)
         {
             var result = await _mediator.Send(command);
-            return Ok(result);
+            return Ok(APIResponse<AuthResponseDto>.Success(result));
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginCommand command)
         {
             var result = await _mediator.Send(command);
-            return Ok(result);
+            return Ok(APIResponse<AuthResponseDto>.Success(result));
         }
     }
 }
