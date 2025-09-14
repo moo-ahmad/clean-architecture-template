@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FollowUpMate.Infrastructure.Logging
+namespace FollowUpMate.Application.Logging
 {
     public interface IAppLogger<T>
     {

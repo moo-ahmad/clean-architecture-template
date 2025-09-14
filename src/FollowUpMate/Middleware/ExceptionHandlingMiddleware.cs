@@ -1,4 +1,5 @@
-﻿using FollowUpMate.Infrastructure.Logging;
+﻿using FollowUpMate.Application.Logging;
+using FollowUpMate.Infrastructure.Logging;
 using System;
 using System.Net;
 using System.Text.Json;

@@ -1,6 +1,9 @@
 ﻿using FollowUpMate.Application.Interfaces;
 using FollowUpMate.Application.Interfaces.Auth;
+using FollowUpMate.Application.Interfaces.Dapper;
 using FollowUpMate.Application.Interfaces.Repository;
+using FollowUpMate.Application.Logging;
+using FollowUpMate.Infrastructure.Dapper;
 using FollowUpMate.Infrastructure.Data;
 using FollowUpMate.Infrastructure.Identity;
 using FollowUpMate.Infrastructure.Logging;
@@ -28,6 +31,8 @@ namespace FollowUpMate.Infrastructure
             services.AddScoped(typeof(IAppLogger<>), typeof(AppLogger<>));
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IJwtTokenGenerator, JwtTokenGenerator>();
+            services.AddSingleton<IDapperRepository>(
+                new DapperRepository(configuration.GetConnectionString("DefaultConnection")));
             services.AddSingleton(typeof(IAppLogger<>), typeof(AppLogger<>));
 
             services.AddAuthentication();

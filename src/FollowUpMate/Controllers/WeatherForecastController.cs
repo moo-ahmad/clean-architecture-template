@@ -1,3 +1,4 @@
+using FollowUpMate.Application.Logging;
 using FollowUpMate.Infrastructure.Logging;
 using Microsoft.AspNetCore.Mvc;
 
