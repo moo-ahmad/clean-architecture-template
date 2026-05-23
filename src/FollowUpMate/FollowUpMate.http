@@ -1,6 +1,0 @@
-@FollowUpMate_HostAddress = http://localhost:5186
-
-GET {{FollowUpMate_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
