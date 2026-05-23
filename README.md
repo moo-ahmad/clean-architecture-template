@@ -45,8 +45,7 @@ dotnet --version
 ### 1. Clone the template
 
 ```bash
-git clone <your-repo-url>
-cd followup-mate-server
+git clone https://github.com/moo-ahmad/clean-architecture-template.git
 ```
 
 ### 2. Rename the solution
@@ -68,7 +67,7 @@ Apply the rename:
 | Parameter | Description |
 | --- | --- |
 | `NewName` | **Required.** PascalCase name (e.g. `AcmeBilling`). Used for assemblies, namespaces, and the default database catalog name. |
-| `OldName` | Placeholder to replace. Default in the script is `FollowUpMate`; use `ProjName` for this repository copy. |
+| `OldName` | Placeholder to replace. Default in the script is `ProjName`
 | `SourceRoot` | Path to the folder containing the `.sln`. Defaults to `./src`. |
 | `WhatIf` | Dry run — lists changes without writing files. |
 
@@ -130,7 +129,7 @@ Ports come from `Properties/launchSettings.json`; adjust them if needed.
 ## Solution layout
 
 ```
-followup-mate-server/
+clean-architecture-template/
 ├── Rename-Project.ps1          # Template rename automation
 ├── README.md
 └── src/
@@ -197,7 +196,3 @@ Confirm SQL Server is running, the catalog name exists or can be created, and th
 
 **JWT validation errors**  
 `Jwt:Issuer` and the token issuer must match. Use a sufficiently long `Jwt:Key` for HMAC signing.
-
-## License
-
-Add your license here (e.g. MIT) if you publish this template for others to use.
